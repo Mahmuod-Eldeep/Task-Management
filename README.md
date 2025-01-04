@@ -28,14 +28,14 @@ This application is a task management API built using Laravel.
    \`\`\`
 
 4. Modify the \`.env\` file and add your database details:
-   \`\`\`
+```text
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
    DB_DATABASE=your_database_name
    DB_USERNAME=your_database_username
    DB_PASSWORD=your_database_password
-   \`\`\`
+  ```
 
 5. Generate application key:
    \`\`\`
@@ -56,15 +56,6 @@ php artisan serve
 \`\`\`
 
 The application will be available at \`http://localhost:8000\`.
-
-## Basic Usage
-
-- Register: \`POST /api/register\`
-- Login: \`POST /api/login\`
-- Create a new task: \`POST /api/tasks\`
-- Get list of tasks: \`GET /api/tasks\`
-- Update a task: \`PUT /api/tasks/{task_id}\`
-- Add dependency to a task: \`POST /api/tasks/{task_id}/dependencies\`
 
 Make sure to include the authentication token in the request header to access protected endpoints.
 
