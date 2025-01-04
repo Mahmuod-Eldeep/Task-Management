@@ -68,55 +68,43 @@ The application will be available at \`http://localhost:8000\`.
 
 Make sure to include the authentication token in the request header to access protected endpoints.
 
-## Entity-Relationship Diagram (ERD)
+## Database ERD
 
+Below is the Entity-Relationship Diagram for the Task Management API database:
 
-Below is the Entity-Relationship Diagram for the Task Management System:
-
-
-\`\`\`mermaid
+```text
 erDiagram
-    User ||--o{ Task : "is assigned to"
-    User ||--o{ Role : "has"
-    Task ||--o{ TaskDependency : "has"
-    Task ||--o{ TaskDependency : "depends on"
-    Task {
-        int id PK
-        string title
-        text description
-        int assignee_id FK
-        date due_date
-        enum status
-        timestamp created_at
-        timestamp updated_at
+    USERS ||--o{ TASKS : creates
+    USERS {
+        id int PK
+        name string
+        email string
+        password string
+        role enum
+        remember_token string
+        created_at timestamp
+        updated_at timestamp
     }
-    User {
-        int id PK
-        string name
-        string email
-        string password
-        timestamp created_at
-        timestamp updated_at
+    TASKS ||--o{ TASK_DEPENDENCIES : has
+    TASKS {
+        id int PK
+        title string
+        description text
+        status enum
+        due_date date
+        user_id int FK
+        created_at timestamp
+        updated_at timestamp
     }
-    Role {
-        int id PK
-        string name
-        timestamp created_at
-        timestamp updated_at
+    TASK_DEPENDENCIES {
+        id int PK
+        task_id int FK
+        dependency_id int FK
+        created_at timestamp
+        updated_at timestamp
     }
-    TaskDependency {
-        int id PK
-        int task_id FK
-        int dependency_id FK
-        timestamp created_at
-        timestamp updated_at
-    }
-
-\`\`\`
-
-
-
-
+```
+![Image Description](images/Untitled.png)
 
 ## Contributing
 
